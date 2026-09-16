@@ -13,8 +13,8 @@
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+* { box-sizing: border-box; min-width: 0; }
+html { -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 body {
   margin: 0;
   background: var(--bg);
@@ -26,6 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 a { color: var(--accent); text-decoration: none; }
@@ -184,9 +185,9 @@ a.tag:hover { color: var(--accent); border-color: var(--border-hover); text-deco
 
 @media (max-width: 600px) {
   .wrap { padding: 0 1.1rem; }
-  .site-header .wrap { min-height: 56px; }
+  .site-header .wrap { min-height: 0; }
   .site-logo { font-size: 0.85rem; }
-  .site-nav { gap: 0.5rem 0.9rem; font-size: 0.8rem; }
+  .site-nav { flex-basis: 100%; gap: 0.5rem 0.9rem; font-size: 0.8rem; }
   .post-list-item { flex-direction: column; gap: 0.25rem; }
   .post-list-date { width: auto; }
   .timeline-item { gap: 0.85rem; }
