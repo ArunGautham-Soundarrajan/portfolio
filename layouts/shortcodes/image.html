@@ -1,0 +1,6 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $position := .Get "position" | default "center" }}
+<span class="shortcode-image shortcode-image--{{ $position }}">
+  <img src="{{ $src | relURL }}" alt="{{ $alt }}" loading="lazy">
+</span>

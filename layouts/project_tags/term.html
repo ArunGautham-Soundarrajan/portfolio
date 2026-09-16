@@ -1,0 +1,31 @@
+{{ define "main" }}
+<h1 class="article-title">Projects tagged &ldquo;{{ .Title }}&rdquo;</h1>
+
+{{ $pages := where .Pages "Section" "projects" }}
+{{ $paginator := .Paginate $pages 9 }}
+{{ $allProjects := where .Site.RegularPages "Section" "projects" }}
+{{ $projectTags := index .Site.Taxonomies "project_tags" }}
+
+{{ if $projectTags }}
+<div class="project-filters">
+  <span class="project-filters__label">Filter:</span>
+  <a class="button inline" href="{{ "/projects/" | relLangURL }}">All <span class="project-filters__count">{{ len $allProjects }}</span></a>
+  {{ range $name, $taxonomy := $projectTags }}
+    <a class="button inline" href="{{ (printf "/project_tags/%s/" ($name | urlize)) | relLangURL }}">{{ $name }} <span class="project-filters__count">{{ $taxonomy.Count }}</span></a>
+  {{ end }}
+</div>
+{{ end }}
+
+<div class="project-grid">
+  {{ range $paginator.Pages }}
+    <article class="project-card">
+      <h2><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
+      <p>{{ .Description }}</p>
+      {{ with .Params.project_tags }}
+        <div class="tag-list">{{ range . }}<span class="tag">{{ . }}</span>{{ end }}</div>
+      {{ end }}
+    </article>
+  {{ end }}
+</div>
+{{ partial "pagination.html" $paginator }}
+{{ end }}

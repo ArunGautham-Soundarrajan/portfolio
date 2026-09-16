@@ -1,0 +1,16 @@
+{{ define "main" }}
+<h1 class="article-title">Tagged: {{ .Title }}</h1>
+{{ $paginator := .Paginate .Pages 10 }}
+<div class="post-list">
+  {{ range $paginator.Pages }}
+    <article class="post-list-item">
+      <div class="post-list-date"><time>{{ partial "post-date" . }}</time></div>
+      <div class="post-list-main">
+        <h2><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
+        {{ with .Description }}<p>{{ . }}</p>{{ end }}
+      </div>
+    </article>
+  {{ end }}
+</div>
+{{ partial "pagination.html" $paginator }}
+{{ end }}

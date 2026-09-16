@@ -1,0 +1,12 @@
+# -- Theme Options --
+# Options used by the custom layouts in /layouts.
+
+description = "Arun Soundarrajan — Lead AI Engineer. Notes on ML, search, and building things."
+
+[logo]
+  logoText = "arungautham.dev"
+
+[social]
+  github = "https://github.com/ArunGautham-Soundarrajan"
+  linkedin = "https://www.linkedin.com/in/arun-soundarrajan/"
+  medium = "https://medium.com/@Arun_Gautham_Soundarrajan"
